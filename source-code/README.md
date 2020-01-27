@@ -1,0 +1,14 @@
+# Source code
+
+This is source code that is either used in the presentation, or was developed
+to create it.  There is some material not covered in the presentation as well.
+
+## What is it?
+
+1. `Branching`: branching instructions can decrease performance.
+1. `Fdo`: small illustration of using FDO (Feedback Directed Optimization).
+1. `GalleryProcessorCacheEffects`: C implementations of the code examples
+    given in Igor Ostrovsky's interesting blog post on effects the various
+    caching mechanisms in a modern CPU can have on performance.  See the
+    following URL for his original post:
+    http://igoro.com/archive/gallery-of-processor-cache-effects/
