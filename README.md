@@ -9,6 +9,7 @@ For information on the training, see the website
 
 1. [code_optimization.pptx](code_optimization.pptx): PowerPoint
    presentation used for the training.
+1. [`arm-map`](arm-map): Powerpoint presentation on the Arm MAP profiler.
 1. [`source-code`](source-code): directory that contains sample code written to
    develop the slides and illustrate concepts.
 1. [`info`](info): some performance measurements (CPU and memory) for HPC
