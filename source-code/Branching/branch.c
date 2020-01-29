@@ -32,8 +32,11 @@ long count_if(double *x, int n, int k) {
     int i, j;
     for (j = 0; j < k; j++)
         for (i = 0; i < n; i++)
-            if (x[i] < 0.5)
+            if (x[i] < 0.5) {
+                x[i] = log(sqrt(x[i]));
                 total++;
+            } else
+                x[i] = sqrt(-log(x[i]));
     return total;
 }
 
@@ -41,8 +44,10 @@ long count_cond_expr(double *x, int n, int k) {
     long total = 0;
     int i, j;
     for (j = 0; j < k; j++)
-        for (i = 0; i < n; i++)
+        for (i = 0; i < n; i++) {
             total += x[i] < 0.5 ? 1 : 0;
+            x[i] = x[i] < 0.5 ? log(sqrt(x[i])) : sqrt(-log(x[i]));
+        }
     return total;
 }
 
@@ -67,6 +72,8 @@ int main(int argc, char *argv[]) {
     printf("if condition:         %.6lf (%ld)\n",
             tv2.tv_sec - tv1.tv_sec + 1.0e-6*(tv2.tv_usec - tv1.tv_usec),
             counter);
+    free(x);
+    x = init(n);
     gettimeofday(&tv1, NULL);
     counter = count_cond_expr(x, n, k);
     gettimeofday(&tv2, NULL);
@@ -83,6 +90,8 @@ int main(int argc, char *argv[]) {
             tv2.tv_sec - tv1.tv_sec + 1.0e-6*(tv2.tv_usec - tv1.tv_usec),
             counter);
     gettimeofday(&tv1, NULL);
+    free(x);
+    x = init_cont(n, fraction);
     counter = count_cond_expr(x, n, k);
     gettimeofday(&tv2, NULL);
     printf("condition expression: %.6lf (%ld)\n",
