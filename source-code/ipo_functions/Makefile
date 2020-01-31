@@ -1,9 +1,9 @@
 CXX = g++
 CXXFLAGS = -O3
 
-all: pure_functions.exe
+all: ipo_functions.exe
 
-pure_functions.exe: pure_functions.o functions.o
+ipo_functions.exe: ipo_functions.o functions.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
