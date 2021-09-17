@@ -1,2 +1,7 @@
-double sqr_unpure(double x);
-[[gnu::pure]] double sqr_pure(double x);
+#ifndef FUNCTIONS_HDR
+#define FUNCTIONS_HDR
+
+double sqrt_unpure(double x);
+[[gnu::pure]] double sqrt_pure(double x);
+
+#endif
