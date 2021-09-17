@@ -12,3 +12,4 @@ to create it.  There is some material not covered in the presentation as well.
     caching mechanisms in a modern CPU can have on performance.  See the
     following URL for his original post:
     http://igoro.com/archive/gallery-of-processor-cache-effects/
+1. `pure_functions`: performance impact of the pure annotation.
