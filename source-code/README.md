@@ -13,3 +13,4 @@ to create it.  There is some material not covered in the presentation as well.
     following URL for his original post:
     http://igoro.com/archive/gallery-of-processor-cache-effects/
 1. `pure_functions`: performance impact of the pure annotation.
+1. `compiler_options`: testing the influcence of compiler options on performance.
