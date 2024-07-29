@@ -1,0 +1,39 @@
+Intel(R) Memory Latency Checker - v3.11a
+*** Unable to modify prefetchers (try executing 'modprobe msr')
+*** So, enabling random access for latency measurements
+Measuring idle latencies for random access (in ns)...
+		Numa node
+Numa node	     0	     1	     2	     3	     4	     5	     6	     7	
+       0	  95.4	 106.3	 111.9	 123.2	 188.3	 188.4	 188.1	 188.3	
+       1	 103.5	  96.3	 118.9	 113.4	 187.4	 187.6	 186.9	 187.6	
+       2	 110.2	 120.7	  96.2	 107.7	 187.6	 187.7	 187.5	 187.8	
+       3	 119.0	 112.5	 102.4	  96.5	 187.6	 187.8	 187.4	 187.9	
+       4	 188.1	 189.2	 187.6	 189.2	  95.8	 105.9	 112.4	 122.6	
+       5	 186.6	 188.0	 186.1	 188.2	 105.1	  96.8	 117.0	 110.1	
+       6	 187.0	 188.3	 186.8	 188.2	 109.7	 120.0	  97.4	 106.8	
+       7	 186.0	 187.5	 186.1	 187.7	 117.2	 110.2	 104.6	  96.9	
+
+Measuring Peak Injection Memory Bandwidths for the system
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using traffic with the following read-write ratios
+ALL Reads        :	491946.4	
+3:1 Reads-Writes :	429796.2	
+2:1 Reads-Writes :	421356.3	
+1:1 Reads-Writes :	401275.6	
+Stream-triad like:	423697.8	
+
+Measuring Memory Bandwidths between nodes within system 
+Bandwidths are in MB/sec (1 MB/sec = 1,000,000 Bytes/sec)
+Using all the threads from each core if Hyper-threading is enabled
+Using Read-only traffic type
+		Numa node
+Numa node	     0	     1	     2	     3	     4	     5	     6	     7	
+       0	61426.8	60456.4	61581.1	59836.7	56347.1	56476.8	56240.5	56488.1	
+       1	60945.3	61514.6	61122.4	61455.7	56400.1	56572.1	56238.3	56540.5	
+       2	61474.1	61411.7	61675.8	61164.1	56355.9	56553.4	56225.8	56473.2	
+       3	60537.3	61510.4	59931.9	61416.7	56425.0	56601.0	56284.6	56483.4	
+       4	56258.4	56327.3	56442.0	56259.1	61449.0	59522.1	61347.6	60403.0	
+       5	56309.6	56368.5	56531.6	56308.8	61276.1	61687.0	61350.6	61651.9	
+       6	56323.5	56384.6	56535.3	56300.1	61492.2	59652.0	61374.6	60506.1	
+       7	56326.7	56392.2	56543.6	56313.1	61192.2	61668.9	
