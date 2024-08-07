@@ -1,0 +1,102 @@
+# dmidecode 3.3
+Getting SMBIOS data from sysfs.
+SMBIOS 3.6.0 present.
+# SMBIOS implementations newer than version 3.3.0 are not
+# fully supported by this version of dmidecode.
+
+Handle 0x0041, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1-Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 3840 kB
+	Maximum Size: 3840 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 12-way Set-associative
+
+Handle 0x0042, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L2-Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 96 MB
+	Maximum Size: 96 MB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+Handle 0x0043, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L3-Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 105 MB
+	Maximum Size: 105 MB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: Other
+
+Handle 0x0045, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L1-Cache
+	Configuration: Enabled, Not Socketed, Level 1
+	Operational Mode: Write Back
+	Location: Internal
+	Installed Size: 3840 kB
+	Maximum Size: 3840 kB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 12-way Set-associative
+
+Handle 0x0046, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L2-Cache
+	Configuration: Enabled, Not Socketed, Level 2
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 96 MB
+	Maximum Size: 96 MB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: 16-way Set-associative
+
+Handle 0x0047, DMI type 7, 27 bytes
+Cache Information
+	Socket Designation: L3-Cache
+	Configuration: Enabled, Not Socketed, Level 3
+	Operational Mode: Varies With Memory Address
+	Location: Internal
+	Installed Size: 105 MB
+	Maximum Size: 105 MB
+	Supported SRAM Types:
+		Synchronous
+	Installed SRAM Type: Synchronous
+	Speed: Unknown
+	Error Correction Type: Single-bit ECC
+	System Type: Unified
+	Associativity: Other
+
