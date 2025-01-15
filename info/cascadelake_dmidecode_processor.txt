@@ -1,0 +1,126 @@
+# dmidecode 3.3
+Getting SMBIOS data from sysfs.
+SMBIOS 3.2.1 present.
+
+Handle 0x0047, DMI type 4, 48 bytes
+Processor Information
+	Socket Designation: Proc 1
+	Type: Central Processor
+	Family: Xeon
+	Manufacturer: Intel(R) Corporation
+	ID: 57 06 05 00 FF FB EB BF
+	Signature: Type 0, Family 6, Model 85, Stepping 7
+	Flags:
+		FPU (Floating-point unit on-chip)
+		VME (Virtual mode extension)
+		DE (Debugging extension)
+		PSE (Page size extension)
+		TSC (Time stamp counter)
+		MSR (Model specific registers)
+		PAE (Physical address extension)
+		MCE (Machine check exception)
+		CX8 (CMPXCHG8 instruction supported)
+		APIC (On-chip APIC hardware supported)
+		SEP (Fast system call)
+		MTRR (Memory type range registers)
+		PGE (Page global enable)
+		MCA (Machine check architecture)
+		CMOV (Conditional move instruction supported)
+		PAT (Page attribute table)
+		PSE-36 (36-bit page size extension)
+		CLFSH (CLFLUSH instruction supported)
+		DS (Debug store)
+		ACPI (ACPI supported)
+		MMX (MMX technology supported)
+		FXSR (FXSAVE and FXSTOR instructions supported)
+		SSE (Streaming SIMD extensions)
+		SSE2 (Streaming SIMD extensions 2)
+		SS (Self-snoop)
+		HTT (Multi-threading)
+		TM (Thermal monitor supported)
+		PBE (Pending break enabled)
+	Version: Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz
+	Voltage: 1.6 V
+	External Clock: 100 MHz
+	Max Speed: 4000 MHz
+	Current Speed: 2600 MHz
+	Status: Populated, Enabled
+	Upgrade: Socket LGA3647-1
+	L1 Cache Handle: 0x0044
+	L2 Cache Handle: 0x0045
+	L3 Cache Handle: 0x0046
+	Serial Number: Not Specified
+	Asset Tag: UNKNOWN
+	Part Number: Not Specified
+	Core Count: 18
+	Core Enabled: 18
+	Thread Count: 36
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Hardware Thread
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
+Handle 0x004B, DMI type 4, 48 bytes
+Processor Information
+	Socket Designation: Proc 2
+	Type: Central Processor
+	Family: Xeon
+	Manufacturer: Intel(R) Corporation
+	ID: 57 06 05 00 FF FB EB BF
+	Signature: Type 0, Family 6, Model 85, Stepping 7
+	Flags:
+		FPU (Floating-point unit on-chip)
+		VME (Virtual mode extension)
+		DE (Debugging extension)
+		PSE (Page size extension)
+		TSC (Time stamp counter)
+		MSR (Model specific registers)
+		PAE (Physical address extension)
+		MCE (Machine check exception)
+		CX8 (CMPXCHG8 instruction supported)
+		APIC (On-chip APIC hardware supported)
+		SEP (Fast system call)
+		MTRR (Memory type range registers)
+		PGE (Page global enable)
+		MCA (Machine check architecture)
+		CMOV (Conditional move instruction supported)
+		PAT (Page attribute table)
+		PSE-36 (36-bit page size extension)
+		CLFSH (CLFLUSH instruction supported)
+		DS (Debug store)
+		ACPI (ACPI supported)
+		MMX (MMX technology supported)
+		FXSR (FXSAVE and FXSTOR instructions supported)
+		SSE (Streaming SIMD extensions)
+		SSE2 (Streaming SIMD extensions 2)
+		SS (Self-snoop)
+		HTT (Multi-threading)
+		TM (Thermal monitor supported)
+		PBE (Pending break enabled)
+	Version: Intel(R) Xeon(R) Gold 6240 CPU @ 2.60GHz
+	Voltage: 1.6 V
+	External Clock: 100 MHz
+	Max Speed: 4000 MHz
+	Current Speed: 2600 MHz
+	Status: Populated, Enabled
+	Upgrade: Socket LGA3647-1
+	L1 Cache Handle: 0x0048
+	L2 Cache Handle: 0x0049
+	L3 Cache Handle: 0x004A
+	Serial Number: Not Specified
+	Asset Tag: UNKNOWN
+	Part Number: Not Specified
+	Core Count: 18
+	Core Enabled: 18
+	Thread Count: 36
+	Characteristics:
+		64-bit capable
+		Multi-Core
+		Hardware Thread
+		Execute Protection
+		Enhanced Virtualization
+		Power/Performance Control
+
