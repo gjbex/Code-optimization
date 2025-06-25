@@ -14,4 +14,4 @@ to create it.  There is some material not covered in the presentation as well.
     http://igoro.com/archive/gallery-of-processor-cache-effects/
 1. `pure_functions`: performance impact of the pure annotation.
 1. `compiler_options`: testing the influcence of compiler options on performance.
-1. `maqao`: small example of using the Maqao tool to analyze performance.
+1. `maqao`: small example of using the MAQAO tool to analyze performance.
