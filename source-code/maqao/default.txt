@@ -1,0 +1,247 @@
+Target processor is: 11th generation Intel Core processors based on Tiger Lake microarchitecture (x86_64 architecture).
+
+Section 1: Function: saxpy(float, std::vector<float, std::allocator<float> > const&, std::vector<float, std::allocator<float> > const&, std::vector<float, std::allocator<float> >&)
+====================================================================================================================================================================================
+
+Code for this function has been compiled to run on any x86-64 processor (SSE2, 2004). It is not optimized for later processors (AVX etc.).
+These loops are supposed to be defined in: /home/gjb/Projects/Code-optimization/source-code/maqao/saxpy.cpp
+
+Section 1.1: Source loop ending at line 11
+==========================================
+
+Composition and unrolling
+-------------------------
+It is composed of the loop 0
+and is not unrolled or unrolled with no peel/tail loop.
+
+Section 1.1.1: Binary loop #0
+=============================
+
+The loop is defined in /home/gjb/Projects/Code-optimization/source-code/maqao/saxpy.cpp:10-11.
+
+The related source loop is not unrolled or unrolled with no peel/tail loop.
+Warnings:
+Detected a function call instruction: ignoring called function instructions.
+Rerun with --follow-calls=append to include them to analysis  or with --follow-calls=inline to simulate inlining.
+0% of peak computational performance is used (0.28 out of 64.00 FLOP per cycle (GFLOPS @ 1GHz))
+
+CALL instructions
+-----------------
+Detected function call instructions.
+
+Calling (and then returning from) a function prevents many compiler optimizations (like vectorization), breaks control flow (which reduces pipeline performance) and executes extra instructions to save/restore the registers used inside it, which is very expensive (dozens of cycles). Consider to inline small functions.
+ - std::vector<float, std::allocator<float> >::operator[](unsigned long): 1 occurrences
+ - std::vector<float, std::allocator<float> >::operator[](unsigned long) const: 2 occurrences
+ - std::vector<float, std::allocator<float> >::size() const: 1 occurrences
+
+
+Complex instructions
+--------------------
+Detected COMPLEX INSTRUCTIONS.
+
+These instructions generate more than one micro-operation and only one of them can be decoded during a cycle and the extra micro-operations increase pressure on execution units.
+ - ADD: 1 occurrences
+
+
+Slow data structures access
+---------------------------
+Detected data structures (typically arrays) that cannot be efficiently read/written
+ - Constant unknown stride: 3 occurrence(s)
+Non-unit stride (uncontiguous) accesses are not efficiently using data caches
+
+Workaround(s):
+ - Try to reorganize arrays of structures to structures of arrays
+ - Consider to permute loops (see vectorization gain report)
+
+
+Type of elements and instruction set
+------------------------------------
+2 SSE or AVX instructions are processing arithmetic or math operations on single precision FP elements in scalar mode (one at a time).
+
+
+Matching between your loop (in the source code) and the binary loop
+-------------------------------------------------------------------
+The binary loop is composed of 2 FP arithmetical operations:
+ - 1: addition or subtraction
+ - 1: multiply
+The binary loop is loading 92 bytes (23 single precision FP elements).
+The binary loop is storing 20 bytes (5 single precision FP elements).
+
+Arithmetic intensity
+--------------------
+Arithmetic intensity is 0.02 FP operations per loaded or stored byte.
+
+Unroll opportunity
+------------------
+Loop is data access bound.
+Workaround(s):
+Unroll your loop if trip count is significantly higher than target unroll factor and if some data references are common to consecutive iterations. This can be done manually. Or by recompiling with -funroll-loops and/or -floop-unroll-and-jam. Or with the unroll (resp. unroll_and_jam) directive on top of the inner (resp. surrounding) loop. You can enforce an unroll factor: #pragma GCC unroll N
+
+General properties
+------------------
+nb instructions    : 32
+nb uops            : 36
+loop length        : 125
+used x86 registers : 5
+used mmx registers : 0
+used xmm registers : 2
+used ymm registers : 0
+used zmm registers : 0
+nb stack references: 6
+ADD-SUB / MUL ratio: 1.00
+
+
+Front-end
+---------
+ASSUMED MACRO FUSION
+FIT IN UOP CACHE
+micro-operation queue: 7.20 cycles
+front end            : 7.20 cycles
+
+
+Back-end
+--------
+       | P0   | P1   | P2   | P3   | P4   | P5   | P6   | P7   | P8   | P9
+----------------------------------------------------------------------------
+uops   | 4.25 | 4.25 | 7.00 | 7.00 | 4.00 | 4.25 | 4.25 | 4.00 | 4.00 | 4.00
+cycles | 4.25 | 4.25 | 7.00 | 7.00 | 4.00 | 4.25 | 4.25 | 4.00 | 4.00 | 4.00
+
+Execution ports to units layout:
+ - P0 (256 bits): VPU, BRU, ALU, DIV/SQRT
+ - P1 (256 bits): ALU, VPU
+ - P2 (512 bits): load
+ - P3 (512 bits): load
+ - P4 (256 bits): store data
+ - P5 (512 bits): ALU, VPU
+ - P6: ALU, BRU
+ - P7: store address
+ - P8: store address
+ - P9 (256 bits): store data
+
+Cycles executing div or sqrt instructions: NA
+Longest recurrence chain latency (RecMII): 0.00
+
+
+Cycles summary
+--------------
+Front-end : 7.20
+Dispatch  : 7.00
+Data deps.: 0.00
+Overall L1: 7.20
+
+
+Vectorization ratios
+--------------------
+INT
+all    : 0%
+load   : 0%
+store  : 0%
+mul    : NA (no mul vectorizable/vectorized instructions)
+add-sub: NA (no add-sub vectorizable/vectorized instructions)
+fma    : NA (no fma vectorizable/vectorized instructions)
+other  : 0%
+FP
+all     : 11%
+load    : 0%
+store   : 0%
+mul     : 0%
+add-sub : 0%
+fma     : NA (no fma vectorizable/vectorized instructions)
+div/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)
+other   : 100%
+INT+FP
+all     : 4%
+load    : 0%
+store   : 0%
+mul     : 0%
+add-sub : 0%
+fma     : NA (no fma vectorizable/vectorized instructions)
+div/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)
+other   : 11%
+
+
+Vector efficiency ratios
+------------------------
+INT
+all    : 12%
+load   : 12%
+store  : 12%
+mul    : NA (no mul vectorizable/vectorized instructions)
+add-sub: NA (no add-sub vectorizable/vectorized instructions)
+fma    : NA (no fma vectorizable/vectorized instructions)
+other  : 12%
+FP
+all     : 8%
+load    : 6%
+store   : 6%
+mul     : 6%
+add-sub : 6%
+fma     : NA (no fma vectorizable/vectorized instructions)
+div/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)
+other   : 25%
+INT+FP
+all     : 10%
+load    : 9%
+store   : 7%
+mul     : 6%
+add-sub : 6%
+fma     : NA (no fma vectorizable/vectorized instructions)
+div/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)
+other   : 13%
+
+
+Cycles and memory resources usage
+---------------------------------
+Assuming all data fit into the L1 cache, each iteration of the binary loop takes 7.20 cycles. At this rate:
+ - 9% of peak load performance is reached (12.78 out of 128.00 bytes loaded per cycle (GB/s @ 1GHz))
+ - 4% of peak store performance is reached (2.78 out of 64.00 bytes stored per cycle (GB/s @ 1GHz))
+
+
+Front-end bottlenecks
+---------------------
+Performance is limited by instruction throughput (loading/decoding program instructions to execution core) (front-end is a bottleneck).
+
+
+ASM code
+--------
+In the binary file, the address of the loop is: 2684
+
+Instruction                                         | Nb FU | P0   | P1   | P2   | P3   | P4   | P5   | P6   | P7   | P8   | P9   | Latency | Recip. throughput | Vectorization
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MOV -0x18(%RBP),%RDX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | scal (12.5%)
+MOV -0x30(%RBP),%RAX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | N/A
+MOV %RDX,%RSI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+MOV %RAX,%RDI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+CALL 2ea0 <_ZNKSt6vectorIfSaIfEEixEm>               | 2     | 0    | 0    | 0    | 0    | 0.50 | 0    | 1    | 0.50 | 0.50 | 0.50 | 0       | 2                 | N/A
+MOVSS (%RAX),%XMM0                                  | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 4-7     | 0.50              | scal (6.3%)
+MULSS -0x24(%RBP),%XMM0                             | 1     | 0.50 | 0.50 | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 4       | 0.50              | scal (6.3%)
+MOVSS %XMM0,-0x28(%RBP)                             | 1     | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0.50 | 0.50 | 0.50 | 3       | 0.50              | scal (6.3%)
+MOV -0x18(%RBP),%RDX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | scal (12.5%)
+MOV -0x38(%RBP),%RAX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | N/A
+MOV %RDX,%RSI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+MOV %RAX,%RDI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+CALL 2ea0 <_ZNKSt6vectorIfSaIfEEixEm>               | 2     | 0    | 0    | 0    | 0    | 0.50 | 0    | 1    | 0.50 | 0.50 | 0.50 | 0       | 2                 | N/A
+MOVSS (%RAX),%XMM0                                  | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 4-7     | 0.50              | scal (6.3%)
+MOVAPS %XMM0,%XMM2                                  | 1     | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0    | 0       | 0.20              | vect (25.0%)
+ADDSS -0x28(%RBP),%XMM2                             | 1     | 0.50 | 0.50 | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 4       | 0.50              | scal (6.3%)
+MOVSS %XMM2,-0x28(%RBP)                             | 1     | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0.50 | 0.50 | 0.50 | 3       | 0.50              | scal (6.3%)
+MOV -0x18(%RBP),%RDX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | scal (12.5%)
+MOV -0x40(%RBP),%RAX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | N/A
+MOV %RDX,%RSI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+MOV %RAX,%RDI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+CALL 2e7c <_ZNSt6vectorIfSaIfEEixEm>                | 2     | 0    | 0    | 0    | 0    | 0.50 | 0    | 1    | 0.50 | 0.50 | 0.50 | 0       | 2                 | N/A
+MOVSS -0x28(%RBP),%XMM2                             | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 4-7     | 0.50              | scal (6.3%)
+MOVSS %XMM2,(%RAX)                                  | 1     | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0.50 | 0.50 | 0.50 | 3       | 0.50              | scal (6.3%)
+ADDQ $0x1,-0x18(%RBP)                               | 2     | 0.25 | 0.25 | 0.50 | 0.50 | 0.50 | 0.25 | 0.25 | 0.50 | 0.50 | 0.50 | 1       | 0.50              | scal (12.5%)
+MOV -0x30(%RBP),%RAX                                | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 2       | 0.50              | N/A
+MOV %RAX,%RDI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | scal (12.5%)
+CALL 2e54 <_ZNKSt6vectorIfSaIfEE4sizeEv>            | 2     | 0    | 0    | 0    | 0    | 0.50 | 0    | 1    | 0.50 | 0.50 | 0.50 | 0       | 2                 | N/A
+CMP %RAX,-0x18(%RBP)                                | 1     | 0.25 | 0.25 | 0.50 | 0.50 | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.50              | scal (12.5%)
+SETB %AL                                            | 1     | 0.50 | 0    | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0    | 1       | 0.50              | N/A
+TEST %AL,%AL                                        | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | N/A
+JNE 261e <_Z5saxpyfRKSt6vectorIfSaIfEES3_RS1_+0xb5> | 1     | 0.50 | 0    | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0    | 0       | 0.50-1            | N/A
+
+
+
+All innermost loops were analyzed.
+
