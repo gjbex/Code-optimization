@@ -55,6 +55,12 @@ If you plan to do code optimization in a Linux or HPC environment you should
 be familiar with these as well.
 
 
+## Level
+
+* Introductory: 10 %
+* Intermediate: 30 %
+* Advanced: 60 %
+
 ## Trainer(s)
 
   * Geert Jan Bex ([geertjan.bex@uhasselt.be](mailto:geertjan.bex@uhasselt.be))

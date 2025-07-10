@@ -1,0 +1,159 @@
+Target processor is: 11th generation Intel Core processors based on Tiger Lake microarchitecture (x86_64 architecture).
+
+[MAQAO] Info: No innermost loops in the function _Z5saxpyfRKSt6vectorIfSaIfEES3_RS1_.cold
+Section 1: Function: saxpy(float, std::vector<float, std::allocator<float> > const&, std::vector<float, std::allocator<float> > const&, std::vector<float, std::allocator<float> >&)
+====================================================================================================================================================================================
+
+Code for this function has been specialized for Tiger Lake. For execution on another machine, recompile on it or with explicit target (example for a Haswell machine: use -march=haswell, see compiler manual for full list).
+These loops are supposed to be defined in: /home/gjb/Projects/Code-optimization/source-code/maqao/saxpy.cpp
+
+Section 1.1: Source loop ending at line 11
+==========================================
+
+Composition and unrolling
+-------------------------
+It is composed of the following loops [ID (first-last source line)]:
+ - 2 (10-11)
+ - 3 (11-11)
+and is unrolled by 8 (including vectorization).
+
+The following loops are considered as:
+ - unrolled and/or vectorized main: 3
+ - peel or tail: 2
+The analysis will be displayed for the unrolled and/or vectorized loops: 3
+
+Section 1.1.1: Binary (unrolled and/or vectorized) loop #3
+==========================================================
+
+The loop is defined in:
+ - /home/gjb/Projects/Code-optimization/source-code/maqao/saxpy.cpp:11
+ - /usr/include/c++/13/bits/stl_vector.h:989
+
+
+It is main loop of related source loop which is unrolled by 8 (including vectorization).
+20% of peak computational performance is used (13.33 out of 64.00 FLOP per cycle (GFLOPS @ 1GHz))
+
+Type of elements and instruction set
+------------------------------------
+1 AVX instructions are processing arithmetic or math operations on single precision FP elements in vector mode (eight at a time).
+
+
+Matching between your loop (in the source code) and the binary loop
+-------------------------------------------------------------------
+The binary loop is composed of 16 FP arithmetical operations:
+ - 8: addition or subtraction (all inside FMA instructions)
+ - 8: multiply (all inside FMA instructions)
+The binary loop is loading 64 bytes (16 single precision FP elements).
+The binary loop is storing 32 bytes (8 single precision FP elements).
+
+Arithmetic intensity
+--------------------
+Arithmetic intensity is 0.17 FP operations per loaded or stored byte.
+
+General properties
+------------------
+nb instructions    : 6
+nb uops            : 5
+loop length        : 26
+used x86 registers : 5
+used mmx registers : 0
+used xmm registers : 0
+used ymm registers : 2
+used zmm registers : 0
+nb stack references: 0
+
+
+Front-end
+---------
+ASSUMED MACRO FUSION
+FIT IN UOP CACHE
+micro-operation queue: 1.20 cycles
+front end            : 1.20 cycles
+
+
+Back-end
+--------
+       | P0   | P1   | P2   | P3   | P4   | P5   | P6   | P7   | P8   | P9
+----------------------------------------------------------------------------
+uops   | 1.00 | 0.75 | 1.00 | 1.00 | 0.50 | 0.75 | 0.50 | 0.50 | 0.50 | 0.50
+cycles | 1.00 | 0.75 | 1.00 | 1.00 | 0.50 | 0.75 | 0.50 | 0.50 | 0.50 | 0.50
+
+Execution ports to units layout:
+ - P0 (256 bits): VPU, BRU, ALU, DIV/SQRT
+ - P1 (256 bits): ALU, VPU
+ - P2 (512 bits): load
+ - P3 (512 bits): load
+ - P4 (256 bits): store data
+ - P5 (512 bits): ALU, VPU
+ - P6: ALU, BRU
+ - P7: store address
+ - P8: store address
+ - P9 (256 bits): store data
+
+Cycles executing div or sqrt instructions: NA
+Longest recurrence chain latency (RecMII): 1.00
+
+
+Cycles summary
+--------------
+Front-end : 1.20
+Dispatch  : 1.00
+Data deps.: 1.00
+Overall L1: 1.20
+
+
+Vectorization ratios
+--------------------
+all     : 100%
+load    : 100%
+store   : 100%
+mul     : NA (no mul vectorizable/vectorized instructions)
+add-sub : NA (no add-sub vectorizable/vectorized instructions)
+fma     : 100%
+div/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)
+other   : NA (no other vectorizable/vectorized instructions)
+
+
+Vector efficiency ratios
+------------------------
+all     : 50%
+load    : 50%
+store   : 50%
+mul     : NA (no mul vectorizable/vectorized instructions)
+add-sub : NA (no add-sub vectorizable/vectorized instructions)
+fma     : 50%
+div/sqrt: NA (no div/sqrt vectorizable/vectorized instructions)
+other   : NA (no other vectorizable/vectorized instructions)
+
+
+Cycles and memory resources usage
+---------------------------------
+Assuming all data fit into the L1 cache, each iteration of the binary loop takes 1.20 cycles. At this rate:
+ - 41% of peak load performance is reached (53.33 out of 128.00 bytes loaded per cycle (GB/s @ 1GHz))
+ - 41% of peak store performance is reached (26.67 out of 64.00 bytes stored per cycle (GB/s @ 1GHz))
+
+
+Front-end bottlenecks
+---------------------
+Performance is limited by instruction throughput (loading/decoding program instructions to execution core) (front-end is a bottleneck).
+
+By removing all these bottlenecks, you can lower the cost of an iteration from 1.20 to 1.00 cycles (1.20x speedup).
+
+
+ASM code
+--------
+In the binary file, the address of the loop is: 2a30
+
+Instruction                                         | Nb FU | P0   | P1   | P2   | P3   | P4   | P5   | P6   | P7   | P8   | P9   | Latency | Recip. throughput | Vectorization
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+VMOVUPS (%R8,%RAX,1),%YMM1                          | 1     | 0    | 0    | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 3       | 0.50              | vect (50.0%)
+VFMADD213PS (%RDI,%RAX,1),%YMM2,%YMM1               | 1     | 0.50 | 0.50 | 0.50 | 0.50 | 0    | 0    | 0    | 0    | 0    | 0    | 4       | 0.50              | vect (50.0%)
+VMOVUPS %YMM1,(%RCX,%RAX,1)                         | 1     | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0.50 | 0.50 | 0.50 | 3       | 0.50              | vect (50.0%)
+ADD $0x20,%RAX                                      | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | N/A
+CMP %RAX,%RSI                                       | 1     | 0.25 | 0.25 | 0    | 0    | 0    | 0.25 | 0.25 | 0    | 0    | 0    | 1       | 0.25              | N/A
+JNE 2a30 <_Z5saxpyfRKSt6vectorIfSaIfEES3_RS1_+0xa0> | 1     | 0.50 | 0    | 0    | 0    | 0    | 0    | 0.50 | 0    | 0    | 0    | 0       | 0.50-1            | N/A
+
+
+
+All innermost loops were analyzed.
+
