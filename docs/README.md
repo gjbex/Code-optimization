@@ -67,7 +67,7 @@ More concretely, participants should already be comfortable with the following:
   user level.
 
 You do not need prior experience with profiling tools such as `gprof`,
-Arm MAP, MAQAO, or with feedback-directed optimization, vectorization reports,
+Arm MAP, MAQAO, or with feedback-guided optimization, vectorization reports,
 or hardware-specific compiler tuning. Those are part of the training itself.
 
 ### Quick self-assessment
