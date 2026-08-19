@@ -1,0 +1,132 @@
+schema_version = 2
+id = "code-optimization"
+title = "Code optimization"
+content_language = "en"
+summary = """
+In High Performance Computing, performance is a major consideration. Hence it is important to understand the hardware and software properties that influence the performance of your applications. Although this is relevant for software developers, it is also useful for application users who want to understand the performance characteristics of the software they use.
+"""
+
+[[learning_outcomes]]
+statement = "Understand the scaling laws for performance."
+competencies = ["performance.scaling-laws"]
+
+[[learning_outcomes]]
+statement = "Understand the memory architecture of modern computers."
+competencies = ["performance.memory-hierarchy"]
+
+[[learning_outcomes]]
+statement = "Understand vectorization."
+competencies = ["performance.vectorization"]
+
+[[learning_outcomes]]
+statement = "Understand performance pitfalls in shared-memory programming."
+competencies = ["performance.shared-memory-pitfalls"]
+
+[[learning_outcomes]]
+statement = "Profile an application using tools such as `gprof` and Arm MAP."
+competencies = ["profiling.profile-applications"]
+
+[[learning_outcomes]]
+statement = "Use feedback-guided optimization."
+competencies = ["compiler-optimization.feedback-guided-optimization"]
+
+[source]
+metadata_document = "docs/README.md"
+repository_url = "https://github.com/gjbex/Code-optimization/"
+website_url = "https://gjbex.github.io/Code-optimization/"
+license = "CC-BY-4.0"
+
+[delivery]
+duration_minutes = 420
+duration_kind = "fixed"
+session_count = 2
+schedule_complete = false
+description = """
+Total duration: 7 hours, split over two sessions.
+"""
+
+[audience]
+description = """
+This training is for you if you want to develop code that efficiently uses HPC compute infrastructure, or want to tune the parameters of your application for efficiency.
+"""
+
+[prerequisites]
+summary = """
+You will need experience programming in some programming language. This is not a training that teaches programming from scratch. If you plan to do code optimization in a Linux or HPC environment you should be familiar with these as well. More concretely, participants should already be comfortable with the following: * reading and writing small to medium programs in at least one programming language; * loops, conditionals, functions, arrays, and simple data structures; * compiling or running programs from the command line at a basic level; * measuring execution time and comparing two implementations at a basic level; * reading short shell commands or scripts and adapting them slightly; * basic HPC concepts such as cores, nodes, parallel jobs, and wall time at a user level. You do not need prior experience with profiling tools such as `gprof`, Arm MAP, MAQAO, or with feedback-guided optimization, vectorization reports, or hardware-specific compiler tuning. Those are part of the training itself.
+"""
+competencies = ["programming.control-flow", "programming.functions", "programming.basic-data-structures", "command-line.run-or-compile-programs", "performance.measure-execution-time"]
+
+[self_assessment]
+introduction = """
+If you can do most of the tasks below without looking up basic programming or shell syntax, you are likely ready for this training.
+"""
+tasks = [
+  "Write a loop that processes an array or list of numbers.",
+  "Compare two implementations of the same task by timing how long they take.",
+  "Read a short code fragment and identify which part is likely doing most of the work.",
+  "Compile or run a small program from the command line.",
+  "Make a small change to a source file or build command and rerun it.",
+  "Understand at a high level why memory access patterns can affect performance.",
+  "Understand at a high level why using more cores does not always give linear speedup."
+]
+
+[level]
+introductory_percent = 10
+intermediate_percent = 35
+advanced_percent = 55
+description = """
+For participants who already have programming experience, the material in this training is approximately These percentages describe the level of the performance-engineering and code optimization topics covered in the training, not the required entry level in programming itself.
+"""
+
+[[materials]]
+kind = "slides"
+path = "code_optimization.pptx"
+
+[[materials]]
+kind = "source-code"
+path = "source-code"
+
+[[trainers]]
+name = "Geert Jan Bex"
+email = "geertjan.bex@uhasselt.be"
+
+[[maintainers]]
+name = "Geert Jan Bex"
+email = "geertjan.bex@uhasselt.be"
+
+[[sessions]]
+id = "session-1"
+title = "Published schedule"
+duration_minutes = 240
+
+[[sessions.items]]
+subject = "introduction and motivation"
+duration_minutes = 5
+
+[[sessions.items]]
+subject = "performance scaling and scaling laws"
+duration_minutes = 45
+
+[[sessions.items]]
+subject = "computer architecture: memory"
+duration_minutes = 60
+
+[[sessions.items]]
+subject = "coffee break"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "computer architecture: vectorization"
+duration_minutes = 30
+
+[[sessions.items]]
+subject = "profiling"
+duration_minutes = 70
+
+[[sessions.items]]
+subject = "feedback-guided optimization"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "conclusions and wrap-up"
+duration_minutes = 10
